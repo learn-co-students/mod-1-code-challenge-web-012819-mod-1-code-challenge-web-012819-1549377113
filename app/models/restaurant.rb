@@ -31,20 +31,16 @@ class Restaurant
   end
 
   def average_star_rating
-    total_rating = 0
-    self.reviews.each do |review|
-      total_rating += review.rating
+    total_rating = self.reviews.inject(0) do |sum, review|
+      sum += review.rating
     end
     average_rating = total_rating.to_f / self.reviews.length
   end
 
   def longest_review
-    longest_length_review = ""
-    self.reviews.each do |review|
-      # binding.pry
-      longest_length_review = review.content if longest_length_review.length < review.content.length
+    self.reviews.max_by do |review|
+      review.content.length
     end
-    longest_length_review
   end
 
 end

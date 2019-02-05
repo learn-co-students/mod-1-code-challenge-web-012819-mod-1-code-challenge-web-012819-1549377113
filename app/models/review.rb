@@ -9,6 +9,8 @@ class Review
   def initialize(customer, restaurant, rating, content)
     @customer = customer
     @restaurant = restaurant
+    @content = content
+    @@all << self
     if rating > 5
       @rating = 5
     elsif rating < 1
@@ -16,8 +18,6 @@ class Review
     else
       @rating = rating
     end
-    @content = content
-    @@all << self
   end
 
   def self.all
