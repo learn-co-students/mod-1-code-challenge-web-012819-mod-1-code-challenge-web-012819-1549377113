@@ -19,11 +19,8 @@ class Customer
   end
 
   def self.find_by_name(name)
-    full_name = name.split
-    first_name = full_name[0]
-    last_name = full_name[1]
     @@all.find do |customer|
-      customer.first_name == first_name && customer.last_name == last_name
+      customer.full_name == name
     end
   end
 
@@ -34,9 +31,6 @@ class Customer
   end
 
   def self.all_names
-    full_name = name.split
-    first_name = full_name[0]
-    last_name = full_name[1]
     @@all.map do |customer|
       customer.full_name
     end
